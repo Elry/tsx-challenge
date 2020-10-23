@@ -12,11 +12,12 @@ The numbers that are multiple of 3 & 5 are printed as 'ThreeAndFive'.
 Test runner => Mocha\
 Assertions => Chai\
 
-## Build & run
+## Build & run (alternative)
 ```bash
-tsc src\index.ts | node src\index.js
+$tsc src\index.ts
+$node src\index.js
 ```
 Alternate
 ```bash
-ts-node src\index.ts
+$ts-node src\index.ts
 ```
