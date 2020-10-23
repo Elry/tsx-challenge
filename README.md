@@ -12,6 +12,11 @@ The numbers that are multiple of 3 & 5 are printed as 'ThreeAndFive'.
 Test runner => Mocha\
 Assertions => Chai\
 
+## Testing
+```bash
+$npm test
+```
+
 ## Build & run (alternative)
 ```bash
 $tsc src\index.ts
