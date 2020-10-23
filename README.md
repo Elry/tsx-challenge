@@ -11,6 +11,7 @@ The numbers that are multiple of 3 & 5 are printed as 'ThreeAndFive'.
 ## General
 Test runner => Mocha\
 Assertions => Chai\
+The 'others.ts' file is just another way more "cleaner", yet not compatible with the challenge, the valid files are 'index.ts' and 'mapping.ts'.
 
 ## Testing
 ```bash
