@@ -7,6 +7,8 @@ describe('Main', () => {
   
   describe('Mapping', () => {
     describe('Result', () => {
+      let resultValues = Array.from(showing.getResult().values());
+
       it('Should be instance of Map object', () => {
         expect(showing.getResult()).instanceOf(Map);
       });
@@ -19,12 +21,24 @@ describe('Main', () => {
         expect(showing.getResult().size).to.be.equal(100);
       });
 
-      it('Should have all strings (Five, Three, ThreeAndFive) required', () => {
-        let mapValues =  Array.from(showing.getResult().values());
-  
-        expect(mapValues.includes('Five')).to.be.true;
-        expect(mapValues.includes('Three')).to.be.true;
-        expect(mapValues.includes('ThreeAndFive')).to.be.true;
+      it('Should have all strings Five as a string', () => {
+        expect(resultValues.includes('Five')).to.be.true;
+      });
+
+      it('Should have all strings Three as a string', () => {
+        expect(resultValues.includes('Three')).to.be.true;
+      });
+
+      it('Should have all strings ThreeAndFive as a string', () => {
+        expect(resultValues.includes('ThreeAndFive')).to.be.true;
+      });
+
+      it('Check if result mapper have values of type of number', () => {
+        expect(!resultValues.some(i => i instanceof Number)).to.be.true;
+      });
+
+      it('Check if result mapper have values of type of String', () => {
+        expect(!resultValues.some(i => i instanceof String)).to.be.true;
       });
     });
 
@@ -45,6 +59,30 @@ describe('Main', () => {
         expect(showing.getNormalMap().size).to.be.equal(100);
         expect(showing.getFiveMap().size).to.be.equal(Math.round(100 / 5));
         expect(showing.getThreeMap().size).to.be.equal(Math.round(100 / 3));
+      });
+
+      it('Check if all values of the other mappers have strings only', () => {
+        let fiveValues = Array.from(showing.getFiveMap().values()),
+        threeValues = Array.from(showing.getThreeMap().values());
+        
+        expect(!fiveValues.some(i => i instanceof String)).to.be.true;
+        expect(!threeValues.some(i => i instanceof String)).to.be.true;
+      });
+
+      it('Have expected string Five and ThreeAndFive', () => {
+        let fiveValues = Array.from(showing.getFiveMap().values());
+        expect(fiveValues.includes('Five')).to.be.true;
+        expect(fiveValues.includes('ThreeAndFive')).to.be.true;
+      });
+
+      it('Have expected string Three', () => {
+        let threeValues = Array.from(showing.getThreeMap().values());
+        expect(threeValues.includes('Three')).to.be.true;
+      });
+
+      it('Check if all values from normal mapper are numbers', () => {
+        let normalValues = Array.from(showing.getNormalMap().values());
+        expect(!normalValues.some(i => !Number.isInteger(i))).to.be.true;
       });
     });
   });
