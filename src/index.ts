@@ -21,3 +21,6 @@ export class Showing extends Mapping {
     ]);
   }
 }
+
+let sh = new Showing();
+console.log(sh.getResult());
